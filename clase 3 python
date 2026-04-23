@@ -1,0 +1,548 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 39,
+   "id": "44a8d153-d0da-4545-ada7-ae1910ae5506",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "<class 'function'>\n",
+      "¡Bienvenido a Python!\n",
+      "****Función con Argumentos****\n",
+      "¡Bienvenido a Python Rufino!\n",
+      "***Tipos Argumentos***\n",
+      "***Argumentos Posicionales***\n",
+      "¡Bienvenido a Python Rufino Prieto!\n",
+      "***Argumentos Nominales***\n",
+      "¡Bienvenido a Python Rufino Prieto!\n",
+      "***Arguemntos por defecto***\n",
+      "¡Bienvenido a Python Rufino!\n",
+      "¡Bienvenido a .NET Rufino!\n",
+      "***Num Params***\n",
+      "Hoy tenemos: pasta, pizza, ensalada, ***documentación de funciones***\n",
+      "Help on function area_triangulo in module __main__:\n",
+      "\n",
+      "area_triangulo(base, altura)\n",
+      "    Función que calcula el área de un triángulo.\n",
+      "    Parámetros:\n",
+      "     - base: Un número real con la base del triángulo.\n",
+      "     - altura: Un número real con la altura del triángulo.\n",
+      "    Salida:\n",
+      "     Un número real con el área del triángulo de base y altura especificadas.\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "def bienvenida():\n",
+    "     print('¡Bienvenido a Python!')\n",
+    "     return\n",
+    "print(type(bienvenida))\n",
+    "bienvenida()\n",
+    "#print(bienvenida2())#Descomentar para ver que tiene que estar antes la declaración\n",
+    "'''Argumentos de  una función'''\n",
+    "def bienvenida2(nombre):\n",
+    "     print('¡Bienvenido a Python', nombre + '!')\n",
+    "     return\n",
+    "print('****Función con Argumentos****')\n",
+    "bienvenida2('Rufino')\n",
+    "\n",
+    "print('***Tipos Argumentos***')\n",
+    "def bienvenida3(nombre, apellido):\n",
+    "     print('¡Bienvenido a Python', nombre, apellido + '!')\n",
+    "     return\n",
+    "print('***Argumentos Posicionales***')\n",
+    "bienvenida3('Rufino', 'Prieto')\n",
+    "print('***Argumentos Nominales***')\n",
+    "bienvenida3(apellido = 'Prieto', nombre = 'Rufino')\n",
+    "\n",
+    "print('***Arguemntos por defecto***')\n",
+    "def bienvenida4(nombre, lenguaje = 'Python'):\n",
+    "     print('¡Bienvenido a', lenguaje, nombre + '!')\n",
+    "     return\n",
+    "bienvenida4('Rufino')\n",
+    "bienvenida4('Rufino','.NET')\n",
+    "\n",
+    "print('***Num Params***')\n",
+    "def menu(*platos):\n",
+    "     print('Hoy tenemos: ', end='')\n",
+    "     for plato in platos:\n",
+    "         print(plato, end=', ')\n",
+    "     return\n",
+    "\n",
+    "menu('pasta', 'pizza', 'ensalada')\n",
+    "\n",
+    " \n",
+    "print('***documentación de funciones***')\n",
+    "\n",
+    "def area_triangulo(base, altura):\n",
+    "    '''Función que calcula el área de un triángulo.\n",
+    "Parámetros:\n",
+    " - base: Un número real con la base del triángulo.\n",
+    " - altura: Un número real con la altura del triángulo.\n",
+    "Salida:\n",
+    " Un número real con el área del triángulo de base y altura especificadas.\n",
+    "'''\n",
+    "    return base * altura / 2\n",
+    "\n",
+    "help(area_triangulo)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "5ca2cbde-7bb4-4907-bd8f-7fe2975518ec",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "0.5\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "3.14"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#Funciones built-in\n",
+    "#Python dispone de algunas funciones nativas que se cargan cuando se inicia el intérprete. \n",
+    "#Por ejemplo la función max devuelve el mayor valor numérico de una lista de números\n",
+    "max([10,35,5,110,48,30,112,98,87])\n",
+    "min([10,35,5,110,48,30,112,98,87])\n",
+    "a = max([10,5,8])\n",
+    "b = min([10,5,8])\n",
+    "h = (a - b)/10\n",
+    "print(h)\n",
+    "round(3.141592653589793, 6)\n",
+    "round(3.141592653589793, 2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "a05a2955-116b-4203-aec9-6c3c338a917a",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Hola mundo\n",
+      "hola mundo 5 8 [1, 2, 3]\n",
+      "20,30,python\n",
+      "Hola -- 90 -- 80\n",
+      "Hola ⇨ 90 ⇨ 80\n",
+      "Hola 😀 mundo\n",
+      "20 30 python\n",
+      "hola\n",
+      "20 30 python\n",
+      "\n",
+      "\thola\n"
+     ]
+    }
+   ],
+   "source": [
+    "#La función Print\n",
+    "print(\"Hola mundo\")\n",
+    "#lista de argumentos\n",
+    "print(\"hola\", \"mundo\", 5, 8, [1,2,3])\n",
+    "#separador\n",
+    "print(20,30,\"python\", sep=\",\")\n",
+    "print(\"Hola\", 90, 80, sep=\" -- \")\n",
+    "print(\"Hola\", 90, 80, sep=\" \\u21e8 \")\n",
+    "print(\"Hola\", \"mundo\", sep=\" \\U0001F600 \")\n",
+    "print(20,30,\"python\") # sin cambiar el argumento end \n",
+    "print(\"hola\")\n",
+    "\n",
+    "#Cambiando el argumento end:\n",
+    "\n",
+    "print(20,30,\"python\", end=\"\\n\\n\\t\") # utilizando un doble salto de línea + tab\n",
+    "print(\"hola\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "70849f6b-8b5e-4d24-a626-1d53f07482e5",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Ingrese su nombre:  Luis\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Hola Luis bienvenido\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Función input\n",
+    "#la función input permite obtener entrada por teclado, con la finalidad de tomar información proporcionada por el usuario. La sintaxis de input es:\n",
+    "\n",
+    "#var = input(prompt)\n",
+    "#Donde prompt es el mensaje que se muestra al usuario \n",
+    "#al momento que se le solicita la información, var es la variable en la cual se almacena lo que el usuario ingresa hasta que presiona la tecla Enter.\n",
+    "\n",
+    "\n",
+    "nombre = input(\"Ingrese su nombre: \")\n",
+    "print(\"Hola\", nombre, \"bienvenido\")\n",
+    "\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "c2b5e202-8f7f-48fc-9074-393a880b9e25",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Ingrese un número:  1\n"
+     ]
+    },
+    {
+     "ename": "TypeError",
+     "evalue": "can only concatenate str (not \"int\") to str",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mTypeError\u001b[0m                                 Traceback (most recent call last)",
+      "Cell \u001b[1;32mIn[10], line 4\u001b[0m\n\u001b[0;32m      1\u001b[0m \u001b[38;5;66;03m#Es importante tener en cuenta que la función input devuelve siempre un valor de tipo string\u001b[39;00m\n\u001b[0;32m      2\u001b[0m \u001b[38;5;66;03m# No podemos sumar un string con un entero\u001b[39;00m\n\u001b[0;32m      3\u001b[0m n \u001b[38;5;241m=\u001b[39m \u001b[38;5;28minput\u001b[39m(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mIngrese un número: \u001b[39m\u001b[38;5;124m\"\u001b[39m)\n\u001b[1;32m----> 4\u001b[0m \u001b[38;5;28mprint\u001b[39m(n \u001b[38;5;241m+\u001b[39m \u001b[38;5;241m10\u001b[39m)\n",
+      "\u001b[1;31mTypeError\u001b[0m: can only concatenate str (not \"int\") to str"
+     ]
+    }
+   ],
+   "source": [
+    "#Es importante tener en cuenta que la función input devuelve siempre un valor de tipo string\n",
+    "# No podemos sumar un string con un entero\n",
+    "n = input(\"Ingrese un número: \")\n",
+    "print(n + 10)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "b544e362-86af-48c9-b996-f336bb9eaf3e",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Aquí n+n+n corresponde a concatenar la cadena \"12\", en lugar de sumar los valores numéricos.\n",
+    "n = input(\"Ingrese un número: \")\n",
+    "print(n + n + n)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "8262d7ac-cab1-4968-a580-cc80a5520994",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ahora n+n+n si corresponde a sumar dichos valores numéricamente\n",
+    "n = float( input(\"Ingrese un número: \") )\n",
+    "print(n + n + n)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8a46e841-5977-467f-8c8e-f47b6a138ee5",
+   "metadata": {},
+   "source": [
+    "### Funciones definidas por el usuario\n",
+    "def saluda(nombre):\n",
+    "    s = \"Hola \" + nombre + \", bienvenido.\"\n",
+    "    return s\n",
+    "print(saluda(\"Jorge\"))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "891a675a-f99e-4d05-8b6b-72a2647c20b2",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Hola Jorge, bienvenido.\n"
+     ]
+    }
+   ],
+   "source": [
+    "##Funciones definida por el usuario\n",
+    "def saluda(nombre):\n",
+    "    s = \"Hola \" + nombre + \", bienvenido.\"\n",
+    "    return s\n",
+    "print(saluda(\"Jorge\"))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 15,
+   "id": "4a5ea2ae-a190-4706-a0b2-5da2adf0a551",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "True\n",
+      "False\n",
+      "True\n"
+     ]
+    }
+   ],
+   "source": [
+    "def espar(n):\n",
+    "    if n%2 == 0:\n",
+    "        s = True\n",
+    "    else:\n",
+    "        s = False\n",
+    "    return s\n",
+    "print(espar(2))\n",
+    "print(espar(5))\n",
+    "print(espar(10))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "420594a4-5010-4b75-bdbb-ca4653b5397e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "50\n",
+      "3050\n"
+     ]
+    }
+   ],
+   "source": [
+    "#+argumentos\n",
+    "def mayor(a,b):\n",
+    "    m = a\n",
+    "    if a < b:\n",
+    "        m = b\n",
+    "    return m\n",
+    "print( mayor(50,30) )\n",
+    "print( mayor(1100,3050) )"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 19,
+   "id": "77da04bb-b2a7-4458-a358-f441d102df62",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(50, 30)\n",
+      "(750, 130)\n"
+     ]
+    }
+   ],
+   "source": [
+    "#¿Pueden las funciones en Python devolver más de un valor? ¡Claro! Hace falta nada más separar con comas los valores a devolver.\n",
+    "def calcula_rectangulo(b,h):\n",
+    "    A = b*h\n",
+    "    P = 2*b + 2*h\n",
+    "    return A, P\n",
+    "print( calcula_rectangulo(10,5) )\n",
+    "print( calcula_rectangulo(50,15) )\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 21,
+   "id": "c78aefa5-3521-4783-89c3-fb9cf49dba34",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Área: 2000\n",
+      "Perímetro: 240\n"
+     ]
+    }
+   ],
+   "source": [
+    "#También es posible guardar/asignar los valores devueltos por la función en variables:\n",
+    "\n",
+    "area1, perimetro1 = calcula_rectangulo(100, 20)\n",
+    "print(\"Área: {0}\\nPerímetro: {1}\".format(area1, perimetro1))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 23,
+   "id": "c50f2d5a-7c78-4312-8e23-359725bb698e",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "7.5\n",
+      "50.0\n",
+      "8.75\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Funciones con una cantidad de parámetros indeterminada\n",
+    "#al nombre del parámetro le anteponemos un asterisco, esto le indica a Python que la cantidad de argumentos de entrada es indeterminada\n",
+    "def promedio(*numeros):\n",
+    "    suma = 0\n",
+    "    k = 0\n",
+    "    for n in numeros:\n",
+    "        suma += n\n",
+    "        k += 1\n",
+    "    return suma/k\n",
+    "print(promedio(10,5))\n",
+    "print(promedio(10,50,40,80,20,100))\n",
+    "print(promedio(5,15,10,5))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 25,
+   "id": "1462dcd7-b947-4c02-927c-93f7294bfb2f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2\n",
+      "2\n",
+      "2\n"
+     ]
+    }
+   ],
+   "source": [
+    "#Funciones y los argumentos con nombre\n",
+    "#se puede mandar a llamar pasándo los argumentos de manera posicional, es decir, en el orden que fueron definidos en la función, \n",
+    "#o bien, haciendo uso del nombre del parámetro correspondiente al argumento que se introduce\n",
+    "\n",
+    "def cuenta_cuantas(frase, letra):\n",
+    "    k = 0\n",
+    "    for car in frase:\n",
+    "        if car is letra:\n",
+    "            k += 1\n",
+    "    return k\n",
+    "print( cuenta_cuantas(\"hola mundo\", \"o\") )\n",
+    "print( cuenta_cuantas(frase=\"hola mundo\", letra=\"o\") )\n",
+    "print( cuenta_cuantas(letra=\"o\", frase=\"hola mundo\") )"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 29,
+   "id": "744991b2-7e06-4345-b8bf-3a6fd9f1c6c6",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Jorge tiene 8 puntos\n",
+      "Paty tiene 10 puntos\n",
+      "==============================\n",
+      "Ana tiene 6 puntos\n",
+      "Carlos tiene 9 puntos\n",
+      "Victor tiene 4 puntos\n",
+      "Daniela tiene 8 puntos\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "'\\nVea que la definición de la función muestra_puntos incluye un parámetro llamado **personas, \\nesos dos asteriscos antes del nombre del parámetro, indican que no se tiene predeterminado el número de argumentos que se pasarán, pero además, \\nindica que cada argumento a introducir deberá ser un argumento con nombre. Dentro del cuerpo de la función el parámetro **personas \\nes un diccionario cuyas claves son los nombres de los argumentos y los valores corresponden a cada valor asignado al argumento.\\n'"
+      ]
+     },
+     "execution_count": 29,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#En la definición de funciones es posible también especificar que se pasarán ciertos argumentos\n",
+    "#con nombre sin necesidad de escribirlos de manera explícita. Observe la siguiente función:\n",
+    "def muestra_puntos(**personas):\n",
+    "    for persona in personas.items():\n",
+    "        print(persona[0] + \" tiene \" + str(persona[1]) + \" puntos\")\n",
+    "muestra_puntos(Jorge=8, Paty=10)\n",
+    "print(30*\"=\")\n",
+    "muestra_puntos(Ana=6, Carlos=9, Victor=4, Daniela=8)\n",
+    "\n",
+    "'''\n",
+    "Vea que la definición de la función muestra_puntos incluye un parámetro llamado **personas, \n",
+    "esos dos asteriscos antes del nombre del parámetro, indican que no se tiene predeterminado el número de argumentos que se pasarán, pero además, \n",
+    "indica que cada argumento a introducir deberá ser un argumento con nombre. Dentro del cuerpo de la función el parámetro **personas \n",
+    "es un diccionario cuyas claves son los nombres de los argumentos y los valores corresponden a cada valor asignado al argumento.\n",
+    "'''\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "88ad216d-a55f-46b9-abe3-784ad993a216",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.14.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

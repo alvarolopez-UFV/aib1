@@ -1,0 +1,370 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "e5443380-5b72-4a8f-876e-9863da1e6dff",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'try / except / else / finally en Python 😊'"
+      ]
+     },
+     "execution_count": 1,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "\"\"\"try / except / else / finally en Python 😊\"\"\""
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "0e482a64-541b-4924-89c5-8762f7b3b0e3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "La división fue perfecta\n",
+      "Operación terminada\n",
+      "\n",
+      "5.0\n",
+      "Error: No puedes dividir entre 0\n",
+      "Operación terminada\n",
+      "\n",
+      "None\n"
+     ]
+    }
+   ],
+   "source": [
+    "\"\"\"5 ejemplos de fácil a real para clase1. El más básico: dividir números\"\"\"\n",
+    "def dividir(a, b):\n",
+    "    try:\n",
+    "        resultado = a / b\n",
+    "    except ZeroDivisionError:\n",
+    "        print(\"Error: No puedes dividir entre 0\")\n",
+    "        return None\n",
+    "    else:\n",
+    "        print(\"La división fue perfecta\")\n",
+    "        return resultado\n",
+    "    finally:\n",
+    "        print(\"Operación terminada\\n\")\n",
+    "\n",
+    "print(dividir(10, 2))  # Va por else\n",
+    "print(dividir(10, 0))  # Va por except"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "31f5f943-7f32-4103-834b-b42e17314388",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Dime tu edad:  5\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Menor: 5 años\n",
+      "Gracias por usar el programa\n"
+     ]
+    }
+   ],
+   "source": [
+    "\"\"\"Leer un número\"\"\"\n",
+    "try:\n",
+    "    edad = int(input(\"Dime tu edad: \"))\n",
+    "except ValueError:\n",
+    "    print(\"Eso no es un número. Pon 18, 25, etc.\")\n",
+    "else:\n",
+    "    if edad >= 18:\n",
+    "        print(f\"Mayor de edad: {edad} años\")\n",
+    "    else:\n",
+    "        print(f\"Menor: {edad} años\")\n",
+    "finally:\n",
+    "    print(\"Gracias por usar el programa\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "a842aeeb-a7a9-4a50-9be6-1b3cc7ad10e8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "El fichero datos.txt no existe\n",
+      "Intento de lectura finalizado\n"
+     ]
+    }
+   ],
+   "source": [
+    "nombre_fichero = \"datos.txt\"\n",
+    "\n",
+    "try:\n",
+    "    f = open(nombre_fichero, 'r')\n",
+    "except FileNotFoundError:\n",
+    "    print(f\"El fichero {nombre_fichero} no existe\")\n",
+    "except PermissionError:\n",
+    "    print(\"No tienes permisos para leerlo\")\n",
+    "else:\n",
+    "    contenido = f.read()\n",
+    "    print(f\"Fichero leído: {len(contenido)} caracteres\")\n",
+    "    f.close()\n",
+    "finally:\n",
+    "    print(\"Intento de lectura finalizado\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "fe6f97a1-43e9-4d3f-aec0-895e0a4ba91f",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Status OK: 200\n",
+      "Datos: https://api.github.com/user\n",
+      "Petición finalizada\n"
+     ]
+    }
+   ],
+   "source": [
+    "import requests\n",
+    "\n",
+    "url = \"https://api.github.com\"\n",
+    "\n",
+    "try:\n",
+    "    respuesta = requests.get(url, timeout=3)\n",
+    "    respuesta.raise_for_status()  # Lanza error si status 4xx/5xx\n",
+    "except requests.exceptions.Timeout:\n",
+    "    print(\"El servidor tardó mucho\")\n",
+    "except requests.exceptions.RequestException:\n",
+    "    print(\"Error de conexión o URL mal\")\n",
+    "else:\n",
+    "    print(\"Status OK:\", respuesta.status_code)\n",
+    "    print(\"Datos:\", respuesta.json()[\"current_user_url\"])\n",
+    "finally:\n",
+    "    print(\"Petición finalizada\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "6a4b724e-6983-4f84-9a50-451cc352c7db",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "El doble es 84\n",
+      "El doble es 84\n"
+     ]
+    }
+   ],
+   "source": [
+    "# SIN else - mal: mezclas código\n",
+    "try:\n",
+    "    num = int(\"42\")\n",
+    "    print(f\"El doble es {num * 2}\")  # ¿Y si falla justo aquí?\n",
+    "except ValueError:\n",
+    "    print(\"No era número\")\n",
+    "\n",
+    "# CON else - bien: separas\n",
+    "try:\n",
+    "    num = int(\"42\")  # Esto puede fallar\n",
+    "except ValueError:\n",
+    "    print(\"No era número\")\n",
+    "else:\n",
+    "    print(f\"El doble es {num * 2}\")  # Esto solo si lo de arriba OK"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "20eac732-bea2-4c61-9706-0b050c0e8c6b",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "La división fue perfecta\n",
+      "Operación terminada\n",
+      "\n",
+      "5.0\n",
+      "Error: No puedes dividir entre 0\n",
+      "Operación terminada\n",
+      "\n",
+      "None\n"
+     ]
+    },
+    {
+     "name": "stdin",
+     "output_type": "stream",
+     "text": [
+      "Dime tu edad:  e\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Eso no es un número. Pon 18, 25, etc.\n",
+      "Gracias por usar el programa\n",
+      "El fichero 'datos.txt' no existe\n",
+      "Intento de lectura finalizado\n",
+      "El fichero 'no_existe.txt' no existe\n",
+      "Intento de lectura finalizado\n",
+      "Status OK: 200\n",
+      "Datos: https://api.github.com/user\n",
+      "Petición finalizada\n",
+      "El doble es 84\n",
+      "Conversión intentada\n",
+      "No era un número\n",
+      "Conversión intentada\n"
+     ]
+    }
+   ],
+   "source": [
+    "'''Dentro de funciones'''\n",
+    "#Ejemplos de try / except / else / finally en funciones 😊\n",
+    "\n",
+    "#1. Dividir números con función\n",
+    "\n",
+    "def dividir(a, b):\n",
+    "    try:\n",
+    "        resultado = a / b\n",
+    "    except ZeroDivisionError:\n",
+    "        print(\"Error: No puedes dividir entre 0\")\n",
+    "        return None\n",
+    "    else:\n",
+    "        print(\"La división fue perfecta\")\n",
+    "        return resultado\n",
+    "    finally:\n",
+    "        print(\"Operación terminada\\n\")\n",
+    "\n",
+    "# Llamadas\n",
+    "print(dividir(10, 2))  # Va por else\n",
+    "print(dividir(10, 0))  # Va por except\n",
+    "\n",
+    "\n",
+    "#2. Leer edad del usuario\n",
+    "\n",
+    "def pedir_edad():\n",
+    "    try:\n",
+    "        edad = int(input(\"Dime tu edad: \"))\n",
+    "    except ValueError:\n",
+    "        print(\"Eso no es un número. Pon 18, 25, etc.\")\n",
+    "    else:\n",
+    "        if edad >= 18:\n",
+    "            print(f\"Mayor de edad: {edad} años\")\n",
+    "        else:\n",
+    "            print(f\"Menor: {edad} años\")\n",
+    "    finally:\n",
+    "        print(\"Gracias por usar el programa\")\n",
+    "\n",
+    "# Llamada\n",
+    "pedir_edad()\n",
+    "\n",
+    "\n",
+    "#3. Abrir fichero\n",
+    "\n",
+    "def leer_fichero(nombre):\n",
+    "    try:\n",
+    "        f = open(nombre, 'r')\n",
+    "    except FileNotFoundError:\n",
+    "        print(f\"El fichero '{nombre}' no existe\")\n",
+    "    except PermissionError:\n",
+    "        print(\"No tienes permisos para leerlo\")\n",
+    "    else:\n",
+    "        contenido = f.read()\n",
+    "        print(f\"Fichero leído: {len(contenido)} caracteres\")\n",
+    "        f.close()\n",
+    "    finally:\n",
+    "        print(\"Intento de lectura finalizado\")\n",
+    "\n",
+    "# Llamadas\n",
+    "leer_fichero(\"datos.txt\")\n",
+    "leer_fichero(\"no_existe.txt\")\n",
+    "\n",
+    "\n",
+    "#4. Petición a API\n",
+    "\n",
+    "import requests\n",
+    "\n",
+    "def llamar_api(url):\n",
+    "    try:\n",
+    "        respuesta = requests.get(url, timeout=3)\n",
+    "        respuesta.raise_for_status()\n",
+    "    except requests.exceptions.Timeout:\n",
+    "        print(\"El servidor tardó mucho\")\n",
+    "    except requests.exceptions.RequestException:\n",
+    "        print(\"Error de conexión o URL mal\")\n",
+    "    else:\n",
+    "        print(\"Status OK:\", respuesta.status_code)\n",
+    "        print(\"Datos:\", respuesta.json()[\"current_user_url\"])\n",
+    "    finally:\n",
+    "        print(\"Petición finalizada\")\n",
+    "\n",
+    "# Llamada\n",
+    "llamar_api(\"https://api.github.com\")\n",
+    "\n",
+    "\n",
+    "#5. Conversión numérica\n",
+    "\n",
+    "def convertir_a_numero(texto):\n",
+    "    try:\n",
+    "        num = int(texto)\n",
+    "    except ValueError:\n",
+    "        print(\"No era un número\")\n",
+    "    else:\n",
+    "        print(f\"El doble es {num * 2}\")\n",
+    "    finally:\n",
+    "        print(\"Conversión intentada\")\n",
+    "\n",
+    "# Llamadas\n",
+    "convertir_a_numero(\"42\")\n",
+    "convertir_a_numero(\"hola\")\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.14.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
